@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@contentstack/delivery-sdk": "^4.3.0",
-    "@contentstack/live-preview-utils": "^2.0.3",
+    "@contentstack/live-preview-utils": "^2.0.4",
     "next": "14.2.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
