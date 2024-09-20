@@ -1,5 +1,5 @@
 import contentstack, { Region, QueryOperation } from "@contentstack/delivery-sdk"
-import ContentstackLivePreview from "@contentstack/live-preview-utils";
+import ContentstackLivePreview, { IStackSdk } from "@contentstack/live-preview-utils";
 import { Page } from "./types";
 
 export const stack = contentstack.stack({
@@ -17,10 +17,8 @@ export const stack = contentstack.stack({
 ContentstackLivePreview.init({
   ssr: false,
   enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  stackSdk: stack.config,
-  debug: true,
+
+  stackSdk: stack.config as IStackSdk,
   stackDetails: {
     apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
     environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string,
