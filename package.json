@@ -1,7 +1,15 @@
 {
-  "name": "implementation-guide-next",
-  "version": "0.1.0",
+  "name": "contentstack-implementation-guide-next",
+  "version": "0.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timbenniks/contentstack-implementation-guide-next"
+  },
+  "description": "contentstack-implementation-guide-next",
+  "author": "Tim Benniks <tbenniks@gmail.com>",
+  "homepage": "https://timbenniks.dev",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +19,7 @@
   "dependencies": {
     "@contentstack/delivery-sdk": "^4.3.0",
     "@contentstack/live-preview-utils": "^2.0.4",
-    "next": "14.2.12",
+    "next": "14.2.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
