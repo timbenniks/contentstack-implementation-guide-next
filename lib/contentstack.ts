@@ -17,7 +17,7 @@ export const stack = contentstack.stack({
 ContentstackLivePreview.init({
   ssr: false,
   enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
-
+  mode: "builder",
   stackSdk: stack.config as IStackSdk,
   stackDetails: {
     apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
