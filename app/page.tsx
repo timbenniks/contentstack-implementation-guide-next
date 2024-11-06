@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import ContentstackLivePreview from "@contentstack/live-preview-utils";
-import { getPage } from "@/lib/contentstack";
+import { getPage, initLivePreview } from "@/lib/contentstack";
 import { useEffect, useState } from "react";
 import { Page } from "@/lib/types";
 
@@ -15,6 +15,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    initLivePreview();
     ContentstackLivePreview.onEntryChange(getContent);
   }, []);
 

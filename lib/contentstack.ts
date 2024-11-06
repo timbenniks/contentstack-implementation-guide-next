@@ -14,25 +14,27 @@ export const stack = contentstack.stack({
   }
 });
 
-ContentstackLivePreview.init({
-  ssr: false,
-  enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
-  mode: "builder",
-  stackSdk: stack.config as IStackSdk,
-  stackDetails: {
-    apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
-    environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string,
-  },
-  clientUrlParams: {
-    host:
-      process.env.NEXT_PUBLIC_CONTENTSTACK_REGION === "EU"
-        ? "eu-app.contentstack.com"
-        : "app.contentstack.com",
-  },
-  editButton: {
-    enable: true,
-  },
-});
+export function initLivePreview() {
+  ContentstackLivePreview.init({
+    ssr: false,
+    enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
+    mode: "builder",
+    stackSdk: stack.config as IStackSdk,
+    stackDetails: {
+      apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
+      environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string,
+    },
+    clientUrlParams: {
+      host:
+        process.env.NEXT_PUBLIC_CONTENTSTACK_REGION === "EU"
+          ? "eu-app.contentstack.com"
+          : "app.contentstack.com",
+    },
+    editButton: {
+      enable: true,
+    },
+  });
+}
 
 export async function getPage(url: string) {
   const result = await stack
