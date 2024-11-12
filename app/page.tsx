@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import ContentstackLivePreview from "@contentstack/live-preview-utils";
 import { getPage, initLivePreview } from "@/lib/contentstack";
 import { useEffect, useState } from "react";
 import { Page } from "@/lib/types";
+import ContentstackLivePreview, {
+  VB_EmptyBlockParentClass,
+} from "@contentstack/live-preview-utils";
 
 export default function Home() {
   const [page, setPage] = useState<Page>();
@@ -20,7 +22,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="max-w-screen-2xl mx-auto">
+    <main className="max-w-screen-md mx-auto">
       <section className="p-4">
         {page?.title ? (
           <h1
@@ -53,7 +55,11 @@ export default function Home() {
         ) : null}
 
         <div
-          className="space-y-8 max-w-screen-sm mt-4"
+          className={`space-y-8 max-w-screen-sm mt-4 ${
+            !page?.blocks || page.blocks.length === 0
+              ? VB_EmptyBlockParentClass
+              : ""
+          }`}
           {...(page?.$ && page?.$.blocks)}
         >
           {page?.blocks?.map((item, index) => {
@@ -64,7 +70,7 @@ export default function Home() {
               <div
                 key={block._metadata.uid}
                 {...(page?.$ && page?.$[`blocks__${index}`])}
-                className={`flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 ${
+                className={`flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 bg-slate-100 ${
                   isImageLeft ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
@@ -80,7 +86,7 @@ export default function Home() {
                     />
                   ) : null}
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-full md:w-1/2 ">
                   {block.title ? (
                     <h2
                       className="text-2xl font-bold"
