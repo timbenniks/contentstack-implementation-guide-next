@@ -1,3 +1,6 @@
+// Description: Type definitions for the Contentstack API
+
+// PublishDetails object - Represents the details of publish functionality 
 export interface PublishDetails {
   environment: string;
   locale: string;
@@ -5,6 +8,7 @@ export interface PublishDetails {
   user: string;
 }
 
+// File object - Represents a file in Contentstack
 export interface File {
   uid: string;
   created_at: string;
@@ -25,6 +29,7 @@ export interface File {
   $: any;
 }
 
+// Block object - Represents a modular block in Contentstack
 export interface Block {
   _version?: number;
   _metadata: any;
@@ -39,6 +44,7 @@ export interface Blocks {
   block: Block;
 }
 
+// Page object - Represents a page in Contentstack
 export interface Page {
   uid: string;
   $: any;

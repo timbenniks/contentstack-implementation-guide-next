@@ -1,40 +1,52 @@
-"use client";
+"use client"; // This directive indicates that the code is meant to run on the client side
 
-import Image from "next/image";
-import { getPage, initLivePreview } from "@/lib/contentstack";
-import { useEffect, useState } from "react";
-import { Page } from "@/lib/types";
+import Image from "next/image"; // Importing the Image component from Next.js for optimized image rendering
+import { getPage, initLivePreview } from "@/lib/contentstack"; // Importing functions to get page data and initialize live preview from a local library
+import { useEffect, useState } from "react"; // Importing React hooks for side effects and state management
+import { Page } from "@/lib/types"; // Importing the Page type definition from a local types file
 import ContentstackLivePreview, {
   VB_EmptyBlockParentClass,
-} from "@contentstack/live-preview-utils";
+} from "@contentstack/live-preview-utils"; // Importing live preview utilities from Contentstack
 
+/**
+ * The `Home` component is the main page component for the application.
+ * It fetches and displays content from Contentstack, including the page title,
+ * description, image, rich text, and blocks.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered component.
+ *
+ * This component uses the `useState` and `useEffect` hooks to manage state and side effects.
+ * It initializes live preview functionality and listens for entry changes to update the content.
+
+ */
 export default function Home() {
-  const [page, setPage] = useState<Page>();
+  const [page, setPage] = useState<Page>(); // Declaring a state variable 'page' with its setter 'setPage', initially undefined
 
   const getContent = async () => {
-    const page = await getPage("/");
-    setPage(page);
+    const page = await getPage("/"); // Asynchronously fetching page data for the root URL
+    setPage(page); // Updating the state with the fetched page data
   };
 
   useEffect(() => {
-    initLivePreview();
-    ContentstackLivePreview.onEntryChange(getContent);
+    initLivePreview(); // Initializing live preview functionality
+    ContentstackLivePreview.onEntryChange(getContent); // Setting up an event listener to fetch content on entry change
   }, []);
 
   return (
-    <main className="max-w-screen-md mx-auto">
-      <section className="p-4">
+    <main className="max-w-screen-md mx-auto"> {/* Main container with max width and centered alignment */}
+      <section className="p-4"> {/* Section with padding */}
         {page?.title ? (
           <h1
             className="text-4xl font-bold mb-4"
-            {...(page?.$ && page?.$.title)}
+            {...(page?.$ && page?.$.title)} // Adding editable tags if available
           >
-            {page?.title}
+            {page?.title} {/* Rendering the page title */}
           </h1>
         ) : null}
         {page?.description ? (
-          <p className="mb-4" {...(page?.$ && page?.$.description)}>
-            {page?.description}
+          <p className="mb-4" {...(page?.$ && page?.$.description)}> {/* Adding editable tags if available */}
+            {page?.description} {/* Rendering the page description */}
           </p>
         ) : null}
         {page?.image ? (
@@ -44,34 +56,33 @@ export default function Home() {
             height={360}
             src={page?.image.url}
             alt={page?.image.title}
-            {...(page?.image?.$ && page?.image?.$.url)}
+            {...(page?.image?.$ && page?.image?.$.url)} // Adding editable tags if available
           />
         ) : null}
         {page?.rich_text ? (
           <div
-            {...(page?.$ && page?.$.rich_text)}
-            dangerouslySetInnerHTML={{ __html: page?.rich_text }}
+            {...(page?.$ && page?.$.rich_text)} // Adding editable tags if available
+            dangerouslySetInnerHTML={{ __html: page?.rich_text }} // Rendering rich text content as HTML
           />
         ) : null}
-
         <div
           className={`space-y-8 max-w-screen-sm mt-4 ${
             !page?.blocks || page.blocks.length === 0
-              ? VB_EmptyBlockParentClass
+              ? VB_EmptyBlockParentClass // Adding a class if no blocks are present
               : ""
           }`}
-          {...(page?.$ && page?.$.blocks)}
+          {...(page?.$ && page?.$.blocks)} // Adding editable tags if available
         >
           {page?.blocks?.map((item, index) => {
             const { block } = item;
-            const isImageLeft = block.layout === "image_left";
+            const isImageLeft = block.layout === "image_left"; // Checking the layout of the block
 
             return (
               <div
                 key={block._metadata.uid}
-                {...(page?.$ && page?.$[`blocks__${index}`])}
+                {...(page?.$ && page?.$[`blocks__${index}`])} // Adding editable tags if available
                 className={`flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 bg-slate-100 ${
-                  isImageLeft ? "md:flex-row" : "md:flex-row-reverse"
+                  isImageLeft ? "md:flex-row" : "md:flex-row-reverse" // Adjusting the layout based on the block's layout property
                 }`}
               >
                 <div className="w-full md:w-1/2">
@@ -82,7 +93,7 @@ export default function Home() {
                       width={200}
                       height={112}
                       className="w-full"
-                      {...(block?.$ && block?.$.image)}
+                      {...(block?.$ && block?.$.image)} // Adding editable tags if available
                     />
                   ) : null}
                 </div>
@@ -90,15 +101,15 @@ export default function Home() {
                   {block.title ? (
                     <h2
                       className="text-2xl font-bold"
-                      {...(block?.$ && block?.$.title)}
+                      {...(block?.$ && block?.$.title)} // Adding editable tags if available
                     >
-                      {block.title}
+                      {block.title} {/* Rendering the block title */}
                     </h2>
                   ) : null}
                   {block.copy ? (
                     <div
-                      {...(block?.$ && block?.$.copy)}
-                      dangerouslySetInnerHTML={{ __html: block.copy }}
+                      {...(block?.$ && block?.$.copy)} // Adding editable tags if available
+                      dangerouslySetInnerHTML={{ __html: block.copy }} // Rendering block copy as HTML
                       className="prose"
                     />
                   ) : null}
