@@ -65,7 +65,6 @@ export default function Home() {
             dangerouslySetInnerHTML={{ __html: page?.rich_text }} // Rendering rich text content as HTML
           />
         ) : null}
-
         <div
           className={`space-y-8 max-w-screen-sm mt-4 ${
             !page?.blocks || page.blocks.length === 0

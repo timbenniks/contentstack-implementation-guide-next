@@ -3,7 +3,7 @@ import "./globals.css"; // Importing global CSS styles
 
 // Defining metadata for the application
 export const metadata: Metadata = {
-  title: "Ccontentstack Next Implementation", // Title of the application
+  title: "Contentstack Next Implementation", // Title of the application
   description: "Created by Contentstack DevRel", // Description of the application
 };
 
@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode; // Type definition for children prop
 }>) {
   return (
-    <html lang='en'> {/* Setting the language attribute for the HTML document */}
-      <body>{children}</body> {/* Rendering the children components inside the body */}
+    <html lang='en'>{/* Setting the language attribute for the HTML document */}
+      <body>{children}</body>{/* Rendering the children components inside the body */}
     </html>
   );
 }
