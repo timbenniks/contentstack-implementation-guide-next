@@ -1,6 +1,6 @@
 {
   "name": "contentstack-implementation-guide-next",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "repository": {
     "type": "git",
@@ -17,20 +17,20 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@contentstack/delivery-sdk": "4.4.2",
+    "@contentstack/delivery-sdk": "4.4.3",
     "@contentstack/live-preview-utils": "3.0.1",
-    "next": "15.0.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "eslint": "^9.15.0",
-    "eslint-config-next": "15.0.3",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^15.1.0",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
+    "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2"
   }
 }

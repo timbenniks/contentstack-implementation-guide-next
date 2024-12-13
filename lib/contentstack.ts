@@ -1,24 +1,24 @@
 // Importing Contentstack SDK and specific types for region and query operations
 import contentstack, { Region, QueryOperation } from "@contentstack/delivery-sdk";
 // Importing Contentstack Live Preview utilities and stack SDK 
-import ContentstackLivePreview, { IStackSdk } from "@contentstack/live-preview-utils"; 
+import ContentstackLivePreview, { IStackSdk } from "@contentstack/live-preview-utils";
 // Importing the Page type definition 
-import { Page } from "./types"; 
+import { Page } from "./types";
 
 export const stack = contentstack.stack({
-   // Setting the API key from environment variables
+  // Setting the API key from environment variables
   apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
-   // Setting the delivery token from environment variables
+  // Setting the delivery token from environment variables
   deliveryToken: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN as string,
   // Setting the environment based on environment variables
-  environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string, 
+  environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string,
   // Setting the region based on environment variables
-  region: process.env.NEXT_PUBLIC_CONTENTSTACK_REGION === 'EU' ? Region.EU : Region.US, 
+  region: process.env.NEXT_PUBLIC_CONTENTSTACK_REGION === 'EU' ? Region.EU : Region.US,
   live_preview: {
     // Enabling live preview if specified in environment variables
-    enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true', 
+    enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
     // Setting the preview token from environment variables
-    preview_token: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_TOKEN, 
+    preview_token: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_TOKEN,
     host: process.env.NEXT_PUBLIC_CONTENTSTACK_REGION === 'EU' ? "eu-rest-preview.contentstack.com" : "rest-preview.contentstack.com", // Setting the host for live preview based on the region
   }
 });
