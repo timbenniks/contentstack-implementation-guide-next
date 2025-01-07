@@ -1,4 +1,4 @@
-"use client"; // This directive indicates that the code is meant to run on the client side
+"use client"; // This directive indicates that the code is meant to run on the client side and the server side
 
 import Image from "next/image"; // Importing the Image component from Next.js for optimized image rendering
 import { getPage, initLivePreview } from "@/lib/contentstack"; // Importing functions to get page data and initialize live preview from a local library
@@ -34,8 +34,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="max-w-screen-md mx-auto"> {/* Main container with max width and centered alignment */}
-      <section className="p-4"> {/* Section with padding */}
+    <main className="max-w-screen-md mx-auto">
+      {" "}
+      {/* Main container with max width and centered alignment */}
+      <section className="p-4">
+        {" "}
+        {/* Section with padding */}
         {page?.title ? (
           <h1
             className="text-4xl font-bold mb-4"
@@ -45,7 +49,9 @@ export default function Home() {
           </h1>
         ) : null}
         {page?.description ? (
-          <p className="mb-4" {...(page?.$ && page?.$.description)}> {/* Adding editable tags if available */}
+          <p className="mb-4" {...(page?.$ && page?.$.description)}>
+            {" "}
+            {/* Adding editable tags if available */}
             {page?.description} {/* Rendering the page description */}
           </p>
         ) : null}
