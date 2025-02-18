@@ -18,7 +18,6 @@ import ContentstackLivePreview, {
  *
  * This component uses the `useState` and `useEffect` hooks to manage state and side effects.
  * It initializes live preview functionality and listens for entry changes to update the content.
-
  */
 export default function Home() {
   const [page, setPage] = useState<Page>(); // Declaring a state variable 'page' with its setter 'setPage', initially undefined
