@@ -37,11 +37,12 @@ export function initLivePreview() {
     clientUrlParams: {
       host:
         process.env.NEXT_PUBLIC_CONTENTSTACK_REGION === "EU"
-          ? "eu-app.contentstack.com" // Setting the client URL host for the EU region
-          : "app.contentstack.com", // Setting the client URL host for the US region
+          ? "eu-app.contentstack.com" // Setting the CMS app URL host for the EU region
+          : "app.contentstack.com", // Setting the CMS app URL host for the US region
     },
     editButton: {
       enable: true, // Enabling the edit button for live preview
+      exclude: ["outsideLivePreviewPortal"] // Excluding the edit button from the live preview portal
     },
   });
 }
