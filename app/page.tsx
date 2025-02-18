@@ -35,10 +35,8 @@ export default function Home() {
 
   return (
     <main className="max-w-(--breakpoint-md) mx-auto">
-      {" "}
       {/* Main container with max width and centered alignment */}
       <section className="p-4">
-        {" "}
         {/* Section with padding */}
         {page?.title ? (
           <h1
@@ -50,7 +48,6 @@ export default function Home() {
         ) : null}
         {page?.description ? (
           <p className="mb-4" {...(page?.$ && page?.$.description)}>
-            {" "}
             {/* Adding editable tags if available */}
             {page?.description} {/* Rendering the page description */}
           </p>

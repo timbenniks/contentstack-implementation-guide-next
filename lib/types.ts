@@ -20,13 +20,28 @@ export interface File {
   tags: string[];
   filename: string;
   url: string;
-  ACL: any[];
+  ACL: any[] | object;
   is_dir: boolean;
   parent_uid: string;
   _version: number;
   title: string;
+  _metadata?: object;
   publish_details: PublishDetails;
   $: any;
+}
+
+// Link object - Represents a hyperlink in Contentstack
+export interface Link {
+  title: string;
+  href: string;
+}
+
+// Taxonomy object - Represents a taxonomy in Contentstack
+export interface Taxonomy {
+  taxonomy_uid: string;
+  max_terms?: number;
+  mandatory: boolean;
+  non_localizable: boolean;
 }
 
 // Block object - Represents a modular block in Contentstack
