@@ -103,7 +103,7 @@ export default function Home() {
                     />
                   ) : null}
                 </div>
-                <div className="w-full md:w-1/2 ">
+                <div className="w-full md:w-1/2">
                   {block.title ? (
                     <h2
                       className="text-2xl font-bold"
