@@ -34,7 +34,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="max-w-screen-md mx-auto">
+    <main className="max-w-(--breakpoint-md) mx-auto">
       {" "}
       {/* Main container with max width and centered alignment */}
       <section className="p-4">
@@ -72,7 +72,7 @@ export default function Home() {
           />
         ) : null}
         <div
-          className={`space-y-8 max-w-screen-sm mt-4 ${
+          className={`space-y-8 max-w-(--breakpoint-sm) mt-4 ${
             !page?.blocks || page.blocks.length === 0
               ? VB_EmptyBlockParentClass // Adding a class if no blocks are present
               : ""
