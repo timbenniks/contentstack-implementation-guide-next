@@ -4,6 +4,14 @@ import contentstack, { Region, QueryOperation } from "@contentstack/delivery-sdk
 import ContentstackLivePreview, { IStackSdk } from "@contentstack/live-preview-utils";
 // Importing the Page type definition 
 import { Page } from "./types";
+// helper functions from private package to retrieve Contentstack endpoints in a convienient way
+import { getContentstackEndpoints, getRegionForString } from "@timbenniks/contentstack-endpoints";
+
+// Set the region by string value from environment variables
+const region = getRegionForString(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION as string);
+
+// object with all endpoints for region.
+const endpoints = getContentstackEndpoints(region, true)
 
 export const stack = contentstack.stack({
   // Setting the API key from environment variables
@@ -13,13 +21,14 @@ export const stack = contentstack.stack({
   // Setting the environment based on environment variables
   environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string,
   // Setting the region based on environment variables
-  region: process.env.NEXT_PUBLIC_CONTENTSTACK_REGION === 'EU' ? Region.EU : Region.US,
+  region: region,
   live_preview: {
     // Enabling live preview if specified in environment variables
     enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
     // Setting the preview token from environment variables
     preview_token: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_TOKEN,
-    host: process.env.NEXT_PUBLIC_CONTENTSTACK_REGION === 'EU' ? "eu-rest-preview.contentstack.com" : "rest-preview.contentstack.com", // Setting the host for live preview based on the region
+    // Setting the host for live preview based on the region
+    host: endpoints.preview,
   }
 });
 
@@ -28,17 +37,14 @@ export function initLivePreview() {
   ContentstackLivePreview.init({
     ssr: false, // Disabling server-side rendering for live preview
     enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true', // Enabling live preview if specified in environment variables
-    mode: "builder", // Setting the mode to "builder" for live preview
+    mode: "builder", // Setting the mode to "builder" for visual builder
     stackSdk: stack.config as IStackSdk, // Passing the stack configuration
     stackDetails: {
       apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string, // Setting the API key from environment variables
       environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string, // Setting the environment from environment variables
     },
     clientUrlParams: {
-      host:
-        process.env.NEXT_PUBLIC_CONTENTSTACK_REGION === "EU"
-          ? "eu-app.contentstack.com" // Setting the CMS app URL host for the EU region
-          : "app.contentstack.com", // Setting the CMS app URL host for the US region
+      host: endpoints.application
     },
     editButton: {
       enable: true, // Enabling the edit button for live preview

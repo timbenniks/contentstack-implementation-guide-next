@@ -1,6 +1,6 @@
 {
   "name": "contentstack-implementation-guide-next",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "private": false,
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "dependencies": {
     "@contentstack/delivery-sdk": "4.6.0",
     "@contentstack/live-preview-utils": "3.1.2",
+    "@timbenniks/contentstack-endpoints": "^1.0.8",
     "next": "^15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
