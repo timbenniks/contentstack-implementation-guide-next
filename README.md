@@ -15,7 +15,7 @@ More details about this codebase can be found on the [Contentstack docs](https:/
 Before you can run this code, you will need a Contentstack "Stack" to connect to.
 Follow the following steps to seed a Stack that this codebase understands.
 
-> If you installed this Kickstart via the Contentstack Markertplace or the new accoutn onboarding, you can skip this step.
+> If you installed this Kickstart via the Contentstack Markertplace or the new account onboarding, you can skip this step.
 
 ### Install the CLI
 
