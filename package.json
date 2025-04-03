@@ -1,14 +1,14 @@
 {
-  "name": "contentstack-implementation-guide-next",
-  "version": "0.0.12",
+  "name": "kickstart-next",
+  "version": "1.0.0",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/timbenniks/contentstack-implementation-guide-next"
+    "url": "https://github.com/contentstack/kickstart-next"
   },
-  "description": "contentstack-implementation-guide-next",
-  "author": "Tim Benniks <tbenniks@gmail.com>",
-  "homepage": "https://timbenniks.dev",
+  "description": "Contentstack Kickstarts are the minimum amount of code needed to connect to Contentstack.",
+  "author": "Tim Benniks <tim.benniks@contentstack.com>",
+  "homepage": "https://contentstack.com",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
